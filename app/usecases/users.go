@@ -1,22 +1,26 @@
-package fetch
+package usecases
 
 import (
-	"hoge.com/hoge/model"
-	"hoge.com/hoge/repository"
+	"hoge.com/hoge/domain/entity"
+	"hoge.com/hoge/domain/repository"
 )
 
 type Users interface {
-	FetchUsers() ([]model.User, error)
+	FetchUsers() ([]entity.User, error)
 }
 
 type usersUsecase struct {
 	usersRepository repository.User
 }
 
-func (u *usersUsecase) FetchUsers() ([]model.User, error) {
+func NewUsersUsecase(usersRepository repository.User) Users {
+	return &usersUsecase{usersRepository}
+}
+
+func (u *usersUsecase) FetchUsers() ([]entity.User, error) {
 	users, err := u.usersRepository.Fetch()
 	if err != nil {
-		return []model.User{}, err
+		return []entity.User{}, err
 	}
 
 	return users, nil

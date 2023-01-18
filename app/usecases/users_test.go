@@ -1,23 +1,23 @@
-package fetch
+package usecases
 
 import (
 	"reflect"
 	"testing"
 
 	"github.com/golang/mock/gomock"
-	"hoge.com/hoge/model"
-	"hoge.com/hoge/repository"
+	"hoge.com/hoge/domain/entity"
+	"hoge.com/hoge/domain/repository"
 )
 
 func Test_usersUsecase_FetchUsers(t *testing.T) {
 	tests := []struct {
 		name    string
-		want    []model.User
+		want    []entity.User
 		wantErr bool
 	}{
 		{
 			name: "success",
-			want: []model.User{
+			want: []entity.User{
 				{
 					ID:   "123",
 					Name: "456",

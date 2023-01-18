@@ -8,7 +8,7 @@ import (
 	reflect "reflect"
 
 	gomock "github.com/golang/mock/gomock"
-	model "hoge.com/hoge/model"
+	entity "hoge.com/hoge/domain/entity"
 )
 
 // MockUser is a mock of User interface.
@@ -35,10 +35,10 @@ func (m *MockUser) EXPECT() *MockUserMockRecorder {
 }
 
 // Fetch mocks base method.
-func (m *MockUser) Fetch() ([]model.User, error) {
+func (m *MockUser) Fetch() ([]entity.User, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Fetch")
-	ret0, _ := ret[0].([]model.User)
+	ret0, _ := ret[0].([]entity.User)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
